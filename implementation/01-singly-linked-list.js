@@ -45,14 +45,20 @@ class SinglyLinkedList {
         this.length++;
         return this;
         // Write your hypothesis on the time complexity of this method here
+        // O(n)
     }
 
     removeFromHead() {
         // Remove node at head
+        if(this.length === 0) return undefined;
+        this.length--; 
 
-        // Your code here 
+        const result = this.head
+        this.head = this.head.next
 
+        return result;
         // Write your hypothesis on the time complexity of this method here
+        //O(1)
     }
 
     removeFromTail() {
