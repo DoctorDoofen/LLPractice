@@ -82,14 +82,16 @@ class SinglyLinkedList {
         this.head = null
         return result;
         // Write your hypothesis on the time complexity of this method here
+        //O(n)
     }
 
     peekAtHead() {
         // Return the value of head node
-
-        // Your code here 
+        if(this.length === 0) return undefined;
+        return this.head.value
 
         // Write your hypothesis on the time complexity of this method here
+        //O(1)
     }
 
     print() {
