@@ -14,31 +14,36 @@ class SinglyLinkedList {
 
     addToHead(val) {
         // Add node of val to head of linked list
-
-        // Your code here 
-
+        const newNode = new SinglyLinkedNode(val)
         // Write your hypothesis on the time complexity of this method here
+        if (this.head === null) this.head = newNode
+        else {
+            newNode.next = this.head
+            this.head = newNode
+        }
+        this.length++;
+        return this;
     }
 
     addToTail(val) {
         // There are bugs in this method! Fix them!!!
 
         // Add node of val to tail of linked list
-        let newNode = new SinglyLinkedNode(data);
+        const newNode = new SinglyLinkedNode(val);
 
-        if (!head) {
-            head = newNode;
-            return head;
+        if (!this.head) {
+            this.head = newNode;
+
+        } else {
+            let curr = this.head;
+            while (curr.next) {
+                curr = curr.next;
+            }
+            curr.next = newNode;
         }
 
-        let curr = head;
-        while (curr) {
-            curr = current.next;
-        }
-        curr.next = newNode;
-
-        return head;
-
+        this.length++;
+        return this;
         // Write your hypothesis on the time complexity of this method here
     }
 
