@@ -9,18 +9,46 @@ class Queue {
     }
 
     enqueue(val) {
-        // Add node to end of queue (linked list)
+        const newNode = new SinglyLinkedNode(val)
 
-        // Your code here 
+        if (this.length === 0) {
+            this.head = newNode
+            this.tail = newNode
 
+        } else if (this.length === 1) {
+            this.tail = newNode
+            this.head.next = newNode
+
+        } else if (this.length > 1) {
+            this.tail = newNode
+            let currNode = this.head
+            while (currNode.next) {
+                currNode = currNode.next
+                if (currNode.next === null) break
+            }
+            currNode.next = newNode
+        }
+        return ++this.length
         // Write your hypothesis on the time complexity of this method here
+        //O(n)
     }
 
     dequeue() {
-        // Remove node from front of queue (linked list)
+        let result;
+        if (this.length === 0) {
+            return null;
 
-        // Your code here 
+        } else if (this.length === 1) {
+            result = this.head
+            this.head = null
+            this.tail = null
 
+        } else if (this.length > 1) {
+            result = this.head
+            this.head = this.head.next
+        }
+        this.length--;
+        return result.value;
         // Write your hypothesis on the time complexity of this method here
     }
 
