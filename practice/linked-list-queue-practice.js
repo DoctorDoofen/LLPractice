@@ -32,14 +32,27 @@ class SinglyLinkedList {
     listLength() {
         // Returns the length of the list
         // Implement in O(n) and in O(1) time complexity
-
-        // Your code here 
+        if (this.head === null) return 0;
+        let counter = 1,
+            curr = this.head;
+        while (curr.next) {
+            curr = curr.next;
+            counter++
+        }
+        return counter;
     }
 
     sumOfNodes() {
         // Returns the sum of the values of all the nodes
 
-        // Your code here 
+        if (this.head === null) return 0;
+        let sum = 0,
+            curr = this.head;
+        while (curr.next) {
+            sum += curr.value;
+            curr = curr.next;
+        }
+        return sum += curr.value;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -47,15 +60,20 @@ class SinglyLinkedList {
     averageValue() {
         // Returns the average value of all the nodes
 
-        // Your code here 
+        return this.sumOfNodes() / this.listLength()
 
         // Write your hypothesis on the time complexity of this method here
     }
 
     findNthNode(n) {
         // Returns the node at the nth index from the head
-
-        // Your code here 
+        let counter = 0, curr = this.head
+        while (curr.next) {
+            if (n === counter) return curr
+            curr = curr.next
+            counter++
+        }
+        return curr;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -63,21 +81,42 @@ class SinglyLinkedList {
     findMid() {
         // Returns the middle node
         // Implement this as a singly linked list then as a doubly linked list
-            // How do the implementation for singly and doubly vary if at all?
+        // How do the implementation for singly and doubly vary if at all?
 
-        // Your code here 
+        let mid;
+        const size = this.listLength()
+        if (size % 2 === 0) mid = size / 2
+        else mid = Math.ceil(size / 2)
+        return this.findNthNode(--mid)
 
         // Write your hypothesis on the time complexity of this method here
     }
 
+    addToHead(val) {
+        const newNode = new SinglyLinkedNode(val)
+        if (this.listLength() === 0) this.head = newNode
+        else {
+            newNode.next = this.head
+            this.head = newNode
+        }
+    }
 
     reverse() {
         // Returns a new reversed version of the linked list
         // Try implementing it by returning a new linked list then returning
         // the original linked list reversed in place
-            // Does the time complexity change? How about space complexity?
+        // Does the time complexity change? How about space complexity?
 
-        // Your code here 
+        const ll = new SinglyLinkedList()
+
+        let curr = this.head
+        while (curr.next) {
+            ll.addToHead(curr.value)
+            curr = curr.next
+        }
+
+        ll.addToHead(curr.value)
+        return ll;
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -125,10 +164,10 @@ class DoublyLinkedList {
     findMid() {
         // Returns the middle node
         // Implement this as a singly linked list then as a doubly linked list
-            // How do the implementation for singly and doubly vary if at all?
+        // How do the implementation for singly and doubly vary if at all?
 
         // Your code here 
-        
+
         // Write your hypothesis on the time complexity of this method here
     }
 

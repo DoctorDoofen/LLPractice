@@ -7,7 +7,7 @@ const { expect } = require('chai');
 const chai = require('chai');
 
 
-describe('Part 2: Linked Lists', () => {
+describe.only('Part 2: Linked Lists', () => {
   let node;
   let list;
 
